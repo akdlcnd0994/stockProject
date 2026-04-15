@@ -1,0 +1,395 @@
+/* 기본 App 스타일 */
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+body {
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더 스타일 */
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 25px 30px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-bottom: 2px solid #34495e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header-icon {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* 로딩 스타일 */
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  padding: 50px;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  display: grid;
+  gap: 30px;
+}
+
+/* 섹션 공통 스타일 */
+.stock-index-section,
+.top-section {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dfe6e9;
+}
+
+.stock-index-section h2,
+.top-section h2 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-icon {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #3498db;
+  font-weight: bold;
+}
+
+/* 주요 지수 스타일 */
+.indices-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.index-card {
+  text-align: center;
+  padding: 18px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dfe6e9;
+  transition: all 0.2s ease;
+}
+
+.index-card:hover {
+  border-color: #3498db;
+  background: #ffffff;
+  box-shadow: 0 3px 8px rgba(52, 152, 219, 0.15);
+  transform: translateY(-1px);
+}
+
+.index-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.index-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.index-change {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 80px;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+}
+
+.index-change.positive {
+  background-color: #ffeaea;
+  color: #e74c3c;
+  border: 1px solid #f8d7da;
+}
+
+.index-change.negative {
+  background-color: #e8f4f8;
+  color: #3498db;
+  border: 1px solid #d6eaf8;
+}
+
+/* 주식 리스트 스타일 */
+.stock-list {
+  display: grid;
+  gap: 15px;
+}
+
+.stock-item {
+  padding: 18px;
+  border: 1px solid #dfe6e9;
+  border-radius: 6px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.stock-item:hover {
+  border-color: #3498db;
+  background: #f8f9fa;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.stock-item.positive {
+  border-left: 3px solid #e74c3c;
+  background: #fef9f9;
+}
+
+.stock-item.negative {
+  border-left: 3px solid #3498db;
+  background: #f4f8fb;
+}
+
+.stock-item.volume {
+  border-left: 3px solid #f39c12;
+  background: #fef9f4;
+}
+
+.stock-item.market-cap {
+  border-left: 3px solid #27ae60;
+  background: #f4faf6;
+}
+
+/* 주식 정보 스타일 */
+.stock-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.stock-price {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+.stock-change {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.change-rate,
+.change-amount,
+.stock-volume {
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  color: #555;
+  border: 1px solid #e9ecef;
+}
+
+/* 등락률 색상 */
+.change-rate.positive {
+  color: #e74c3c;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.change-rate.negative {
+  color: #3498db;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+/* 탭 네비게이션 스타일 */
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 30px 0;
+  background: #ecf0f1;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dfe6e9;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: transparent;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 120px;
+}
+
+.tab-button:hover {
+  background-color: #ffffff;
+  color: #2c3e50;
+}
+
+.tab-button.active {
+  background: #3498db;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+}
+
+/* 탭 아이콘 스타일 */
+.tab-icon {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.tab-icon.rise {
+  color: #e74c3c;
+}
+
+.tab-icon.fall {
+  color: #3498db;
+}
+
+.tab-icon.volume {
+  color: #f39c12;
+  font-size: 1.1rem;
+}
+
+.tab-icon.market {
+  color: #27ae60;
+  font-size: 0.7rem;
+}
+
+.tab-button.active .tab-icon {
+  color: white;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab-content {
+  background: white;
+  border-radius: 6px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dfe6e9;
+  min-height: 400px;
+}
+
+.tab-content h2 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 12px;
+}
+
+/* 변경 애니메이션 효과 */
+@keyframes highlight {
+  0% {
+    background-color: #fff3cd;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+  }
+  100% {
+    background-color: #f8f9fa;
+    box-shadow: none;
+  }
+}
+
+.index-card.updated {
+  animation: highlight 3s ease-out;
+}
+
+.stock-item.updated {
+  animation: highlight 3s ease-out;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .index-value {
+    font-size: 2.5rem;
+  }
+
+  .stock-change {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-navigation {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-button {
+    min-width: auto;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .indices-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .index-value {
+    font-size: 1.2rem;
+  }
+
+  .index-name {
+    font-size: 0.8rem;
+  }
+
+  .index-change {
+    font-size: 0.75rem;
+  }
+}

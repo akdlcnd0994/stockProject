@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.stockproject.mapper.TimePriceMapper">
+
+    <!-- 가격 데이터 일괄 저장 -->
+    <insert id="insertTimePriceList">
+        INSERT INTO timeprice(tpname, tpdate, tptime, tp) VALUES
+        <foreach collection="list" item="tp" separator=",">
+            (#{tp.tpname}, #{tp.tpdate}, #{tp.tptime}, #{tp.tpprice})
+        </foreach>
+    </insert>
+
+<!--    &lt;!&ndash; 단일 가격 데이터 저장 &ndash;&gt;-->
+<!--    <insert id="insertTimePrice" parameterType="com.example.stockproject.dto.TimePriceDto">-->
+<!--        &lt;!&ndash; SQL 구문을 여기에 작성하세요 &ndash;&gt;-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash; 특정 날짜의 데이터 조회 &ndash;&gt;-->
+<!--    <select id="selectByTpdate" parameterType="java.time.LocalDate" resultType="com.example.stockproject.dto.TimePriceDto">-->
+<!--        &lt;!&ndash; SQL 구문을 여기에 작성하세요 &ndash;&gt;-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; 특정 종목의 데이터 조회 &ndash;&gt;-->
+<!--    <select id="selectByTpname" parameterType="String" resultType="com.example.stockproject.dto.TimePriceDto">-->
+<!--        select * from stockproject where tpname = '${tpname}'-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; 특정 날짜와 종목의 데이터 조회 &ndash;&gt;-->
+<!--    <select id="selectByTpdateAndTpname" resultType="com.example.stockproject.dto.TimePriceDto">-->
+<!--        &lt;!&ndash; SQL 구문을 여기에 작성하세요 &ndash;&gt;-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; 전체 데이터 조회 &ndash;&gt;-->
+<!--    <select id="selectAll" resultType="com.example.stockproject.dto.TimePriceDto">-->
+<!--        &lt;!&ndash; SQL 구문을 여기에 작성하세요 &ndash;&gt;-->
+<!--    </select>-->
+
+</mapper>

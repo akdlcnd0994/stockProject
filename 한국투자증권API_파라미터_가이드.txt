@@ -1,0 +1,149 @@
+========================================
+한국투자증권 Open API 파라미터 가이드
+========================================
+
+1. 기본 API 정보
+- BASE_URL: https://openapi.koreainvestment.com:9443
+- 거래량/거래대금 순위 API: /uapi/domestic-stock/v1/quotations/volume-rank
+- TR_ID: FHPST01710000
+
+2. 공통 헤더
+- authorization: Bearer {access_token}
+- appkey: {APP_KEY}
+- appsecret: {APP_SECRET}
+- tr_id: FHPST01710000
+- custtype: P (개인)
+
+3. Query Parameters 상세 설명
+
+FID_COND_MRKT_DIV_CODE (시장구분코드)
+- J: 전체시장 (코스피 + 코스닥)
+- U: 코스피만
+- Q: 코스닥만
+
+FID_COND_SCR_DIV_CODE (화면구분코드)
+거래량/거래대금 관련:
+- 20171: 거래량 순위
+- 20174: 거래대금 순위
+
+등락률 관련:
+- 20172: 상승률 순위
+- 20173: 하락률 순위
+- 20175: 시가총액 순위
+- 20176: 상승률상위 (당일)
+- 20177: 하락률상위 (당일)
+- 20178: 상승률상위 (전일대비)
+- 20179: 하락률상위 (전일대비)
+
+가격 관련:
+- 20181: 고가 순위
+- 20182: 저가 순위
+- 20183: 52주 신고가
+- 20184: 52주 신저가
+- 20185: 전일거래량대비 급증
+- 20186: 전일거래량대비 급감
+
+특수 순위:
+- 20191: 외국인순매수 상위
+- 20192: 외국인순매도 상위
+- 20193: 기관순매수 상위
+- 20194: 기관순매도 상위
+- 20195: 개인순매수 상위
+- 20196: 개인순매도 상위
+
+기술적 지표:
+- 20201: PER 낮은 순위
+- 20202: PER 높은 순위
+- 20203: PBR 낮은 순위
+- 20204: PBR 높은 순위
+- 20205: ROE 높은 순위
+- 20206: 배당수익률 높은 순위
+
+신규/이슈:
+- 20301: 신규상장
+- 20302: 관리종목
+- 20303: 투자주의종목
+- 20304: 거래정지종목
+
+FID_INPUT_ISCD (입력종목코드)
+- 공백: 전체 종목
+- 특정코드: 해당 종목만 (예: 005930 = 삼성전자)
+
+FID_DIV_CLS_CODE (분류구분코드)
+- 0: 전체
+- 1: 보통주
+- 2: 우선주
+
+FID_BLNG_CLS_CODE (소속구분코드)
+- 0: 전체
+- 1: 코스피
+- 2: 코스닥
+
+FID_TRGT_CLS_CODE (대상구분코드) - 9자리
+- 000000000: 모든 종목 타입 포함
+- 111111111: 일반종목만
+- 각 자리수별 의미:
+  [1] 보통주 [2] 우선주 [3] 신주인수권 [4] 리츠 [5] 기타
+  [6] ETF [7] ETN [8] ELW [9] 선물/옵션
+  0: 제외, 1: 포함
+
+FID_TRGT_EXLS_CLS_CODE (대상제외구분코드)
+- 000000: 제외 종목 없음
+- 각 자리는 제외할 종목 타입 지정
+
+FID_INPUT_PRICE_1 (입력가격1)
+- 공백: 제한없음
+- 숫자: 최소가격 조건
+
+FID_INPUT_PRICE_2 (입력가격2)
+- 공백: 제한없음
+- 숫자: 최대가격 조건
+
+FID_VOL_CNT (거래량건수)
+- 공백: 기본값 사용
+- 숫자: 조회할 종목 수 (예: 100, 200)
+
+FID_INPUT_DATE_1 (입력날짜1)
+- 공백: 당일 기준
+- YYYYMMDD: 특정 날짜 지정
+
+4. 실제 사용 예시
+
+# 전체 시장 거래량 TOP
+queryParams = "?FID_COND_MRKT_DIV_CODE=J&FID_COND_SCR_DIV_CODE=20171&FID_INPUT_ISCD=&FID_DIV_CLS_CODE=0&FID_BLNG_CLS_CODE=0&FID_TRGT_CLS_CODE=000000000&FID_TRGT_EXLS_CLS_CODE=000000&FID_INPUT_PRICE_1=&FID_INPUT_PRICE_2=&FID_VOL_CNT=100&FID_INPUT_DATE_1="
+
+# 전체 시장 거래대금 TOP
+queryParams = "?FID_COND_MRKT_DIV_CODE=J&FID_COND_SCR_DIV_CODE=20174&FID_INPUT_ISCD=&FID_DIV_CLS_CODE=0&FID_BLNG_CLS_CODE=0&FID_TRGT_CLS_CODE=000000000&FID_TRGT_EXLS_CLS_CODE=000000&FID_INPUT_PRICE_1=&FID_INPUT_PRICE_2=&FID_VOL_CNT=100&FID_INPUT_DATE_1="
+
+# 코스피만 상승률 TOP
+queryParams = "?FID_COND_MRKT_DIV_CODE=U&FID_COND_SCR_DIV_CODE=20172&FID_INPUT_ISCD=&FID_DIV_CLS_CODE=0&FID_BLNG_CLS_CODE=1&FID_TRGT_CLS_CODE=111111111&FID_TRGT_EXLS_CLS_CODE=000000&FID_INPUT_PRICE_1=&FID_INPUT_PRICE_2=&FID_VOL_CNT=50&FID_INPUT_DATE_1="
+
+# 코스닥만 하락률 TOP
+queryParams = "?FID_COND_MRKT_DIV_CODE=Q&FID_COND_SCR_DIV_CODE=20173&FID_INPUT_ISCD=&FID_DIV_CLS_CODE=0&FID_BLNG_CLS_CODE=2&FID_TRGT_CLS_CODE=111111111&FID_TRGT_EXLS_CLS_CODE=000000&FID_INPUT_PRICE_1=&FID_INPUT_PRICE_2=&FID_VOL_CNT=50&FID_INPUT_DATE_1="
+
+5. 응답 데이터 주요 필드
+
+mksc_shrn_iscd: 종목코드
+hts_kor_isnm: 종목명(한글)
+stck_prpr: 현재가
+prdy_vrss: 전일대비
+prdy_ctrt: 전일대비율(%)
+acml_vol: 누적거래량
+acml_tr_pbmn: 누적거래대금
+lstn_stcn: 상장주식수
+
+6. 주의사항
+
+- API 호출 제한: 초당 20건, 분당 1000건
+- 토큰 유효시간: 24시간
+- 실시간 데이터는 약간의 지연 있을 수 있음
+- 장중에만 실시간 업데이트 (평일 09:00~15:30)
+- FID_TRGT_CLS_CODE는 원하는 종목 타입만 포함하도록 세밀한 조정 필요
+- 더 많은 종목을 보려면 FID_VOL_CNT 값을 늘려서 요청
+
+7. 개발시 팁
+
+- 디버깅 시 응답의 rt_cd 필드 확인 (0이면 성공)
+- 에러 발생시 msg1 필드에서 에러 메시지 확인
+- 테스트 시에는 FID_VOL_CNT를 적게 설정하여 API 호출 제한 절약
+- 코스피/코스닥 모두 포함하려면 FID_COND_MRKT_DIV_CODE=J 사용 권장
