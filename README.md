@@ -24,6 +24,10 @@ frontend
 
 #### 메인
 <img width="1205" height="1031" alt="image" src="https://github.com/user-attachments/assets/dae3a91a-18c6-4007-9c05-a2cc1a7268ad" />
+
+</br>
+</br>
+
 <img width="1202" height="1115" alt="image" src="https://github.com/user-attachments/assets/f7071bc3-befa-4f94-8b1e-9137c0933c71" />
 
 
